@@ -4,7 +4,7 @@
       {
           "type": "lldb",
           "request": "launch",
-          "name": "Zibug Tests",
+          "name": "Zibug",
           "program": "${workspaceFolder}/zig-out/bin/zigprob",
           "args": [],
           "cwd": "${workspaceFolder}",

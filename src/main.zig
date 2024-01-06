@@ -1,27 +1,27 @@
-const std = @import("std");
-const Weird = struct {
-    pos: usize,
-    hay: []const u8,
-
-    pub fn next(this: *@This()) ?[]const u8 {
-        var c = this.hay[this.pos .. this.pos + 1];
-        while (this.pos < this.hay.len and std.mem.indexOf(u8, " \t\n\r", c) != null) {
-            this.pos += 1;
-            return this.hay[this.pos .. this.pos + 1];
-        }
-
-        return null;
+// Notes:
+//  $ zig version
+//  0.12.0-dev.2059+42389cb9c
+//
+//  all conditionals are meant to be skipped, as to **not** enter
+//  conditional blocks.
+pub fn main() void {
+    var pos: usize = 0;
+    while (pos > 1) {
+        pos += 1;
+        @import("std").debug.print("hello world {d}", .{pos});
+        return;
+        // see the terminal below -- nothing written to stdout.
+        // the instruction pointer isn't actually here,
+        // it's just double mapped this while it's
+        // wrapping up the `while` block traversal.
     }
-};
 
-pub fn main() !void {
-    var weird = Weird{
-        .pos = 0,
-        .hay = "this is my haystack",
-    };
-    while (weird.next()) |next| {
-        std.debug.print("should not happen {s}", .{next});
-        unreachable;
+    // same thing happens here during debug. weird!
+    if (pos > 1) {
+        pos += 1;
+        @import("std").debug.print("hello world {d}", .{pos}); // debugger should never reach this!
+        return;
     }
-    std.debug.print("alles gut", .{});
+
+    return;
 }
