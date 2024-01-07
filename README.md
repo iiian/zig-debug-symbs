@@ -16,7 +16,7 @@ to the end of the **inside** of the control flow block.
 
 - a) The predicate guarding each block **must** have evaluated to false, because `(0 > 1) == false`.
 
-- b) The last statement of each control flow block is immediately preceded by a print statement. If we were actually about to execute the last statement of the `while/if` loop, we would `stdout`, but we actually see nothing. 
+- b) The last statement of each control flow block is immediately preceded by a print statement. If we were actually about to execute the last statement of the `while/if` loop, we would have something printed in `stdout`, but in fact we see nothing. 
 
 # Example screenshots:
 
